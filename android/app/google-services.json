@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "607201652187",
+    "project_id": "dentsu-interview",
+    "storage_bucket": "dentsu-interview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607201652187:android:fbe92cadd58510948d4bfe",
+        "android_client_info": {
+          "package_name": "com.example.dentsu_interview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfGoVM23KEDkY6S2vAL0KwnyRlqY_VmEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
