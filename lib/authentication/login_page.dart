@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/authentication/widgets/text_field.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -78,7 +79,9 @@ class LoginPage extends ConsumerWidget {
                 height: 42,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const DashboardRoute());
+                },
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(90)),
