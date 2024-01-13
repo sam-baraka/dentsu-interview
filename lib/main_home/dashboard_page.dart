@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dentsu_interview/main_home/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
-
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -8,6 +8,8 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationWidget(),
+    );
   }
 }

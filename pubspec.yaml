@@ -98,6 +98,7 @@ flutter:
   assets:
     - shorebird.yaml
     - assets/icon/
+    - assets/svgs/
     - google_fonts/
   uses-material-design: true
 
