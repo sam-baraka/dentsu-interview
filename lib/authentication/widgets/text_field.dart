@@ -1,14 +1,13 @@
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AuthTextField extends StatelessWidget {
   final String name;
   final String Function(String?)? validator;
   final String labelText;
   final String hintText;
-  AuthTextField(
+  const AuthTextField(
       {super.key,
       required this.name,
       this.validator,
