@@ -69,7 +69,14 @@ class LoginPage extends ConsumerWidget {
               FormBuilderCheckbox(
                   contentPadding: const EdgeInsets.all(0),
                   name: 'keep_logged_in',
+                  side: MaterialStateBorderSide.resolveWith(
+                    (Set<MaterialState> states) {
+                      return const BorderSide(color: Colors.white);
+                    },
+                  ),
                   checkColor: Colors.white,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4))),
                   title: const Text(
                     'Keep me logged in',
                     style: TextStyle(

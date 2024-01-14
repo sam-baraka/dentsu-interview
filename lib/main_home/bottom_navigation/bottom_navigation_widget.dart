@@ -32,10 +32,12 @@ class BottomNavigationWidget extends ConsumerWidget {
                 },
                 icon: SvgPicture.asset(
                   e,
-                  color: ref.watch(bottomNavigationStateNotifierProvider) ==
-                          bottomSVGS.indexOf(e)
-                      ? DentsuColors.purple
-                      : null,
+                  colorFilter: ColorFilter.mode(
+                      ref.watch(bottomNavigationStateNotifierProvider) ==
+                              bottomSVGS.indexOf(e)
+                          ? DentsuColors.brightPurple
+                          : DentsuColors.lightGrey,
+                      BlendMode.srcIn),
                 ));
           }).toList()),
     );
