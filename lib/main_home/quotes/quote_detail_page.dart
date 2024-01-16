@@ -1,5 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/main_home/app_bar/app_bar.dart';
+import 'package:dentsu_interview/main_home/quotes/tabs/benefits.dart';
+import 'package:dentsu_interview/main_home/quotes/tabs/quote_information.dart';
+import 'package:dentsu_interview/main_home/quotes/tabs/setup.dart';
+import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -9,16 +13,17 @@ class QuoteDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: DentsuColors.lightGreyLight,
       appBar: const AppAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 30,
             ),
-            const Text(
+            Text(
               'View Quote',
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),
             ),
@@ -27,7 +32,7 @@ class QuoteDetailPage extends StatelessWidget {
                     length: 3,
                     child: Column(
                       children: [
-                        const TabBar(
+                        TabBar(
                           tabAlignment: TabAlignment.start,
                           isScrollable: true,
                           tabs: [
@@ -45,9 +50,9 @@ class QuoteDetailPage extends StatelessWidget {
                         Expanded(
                             child: TabBarView(
                           children: [
-                            Container(),
-                            Container(),
-                            Container(),
+                            QuoteInformation(),
+                            Setup(),
+                            Benefits(),
                           ],
                         ))
                       ],

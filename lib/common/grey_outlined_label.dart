@@ -7,12 +7,14 @@ class GreyOutlinedLabel extends ConsumerWidget {
   final Color labelColor;
   final Color? backgroundColor;
   final double? height;
+  final bool suffix;
   final bool? boldLabel;
   const GreyOutlinedLabel(
       {super.key,
       required this.label,
       required this.labelColor,
       this.height,
+      this.suffix = false,
       this.backgroundColor,
       this.boldLabel});
 
@@ -21,17 +23,25 @@ class GreyOutlinedLabel extends ConsumerWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(color: DentsuColors.lightGrey),
-          color: backgroundColor ?? DentsuColors.lightGrey,
           borderRadius: BorderRadius.circular(8)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-        child: Text(
-          label,
-          style: TextStyle(
-              color: labelColor,
-              fontWeight:
-                  boldLabel ?? false ? FontWeight.bold : FontWeight.normal),
+        child: Row(
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                  color: labelColor,
+                  fontWeight:
+                      boldLabel ?? false ? FontWeight.bold : FontWeight.normal),
+            ),
+            const Spacer(),
+            suffix
+                ? const Icon(Icons.keyboard_arrow_down_rounded)
+                : const SizedBox.shrink()
+          ],
         ),
       ),
     );
