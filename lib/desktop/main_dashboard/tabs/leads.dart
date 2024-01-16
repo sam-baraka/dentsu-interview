@@ -6,6 +6,9 @@ class DesktopLeads extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
+    return Container(
+        child: Center(
+      child: Text('Desktop Leads'),
+    ));
   }
 }
