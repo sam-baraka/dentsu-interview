@@ -8,5 +8,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(page: DashboardRoute.page),
         AutoRoute(page: LeadDetailRoute.page),
+        AutoRoute(page: QuoteDetailRoute.page),
       ];
 }

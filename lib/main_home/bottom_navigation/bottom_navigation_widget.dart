@@ -21,25 +21,27 @@ class BottomNavigationWidget extends ConsumerWidget {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: bottomSVGS.map((e) {
-            return IconButton(
-                onPressed: () {
-                  ref
-                      .read(bottomNavigationStateNotifierProvider.notifier)
-                      .changeIndex(bottomSVGS.indexOf(e));
-                },
-                icon: SvgPicture.asset(
-                  e,
-                  colorFilter: ColorFilter.mode(
-                      ref.watch(bottomNavigationStateNotifierProvider) ==
-                              bottomSVGS.indexOf(e)
-                          ? DentsuColors.brightPurple
-                          : DentsuColors.lightGrey,
-                      BlendMode.srcIn),
-                ));
-          }).toList()),
+      child: SafeArea(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: bottomSVGS.map((e) {
+              return IconButton(
+                  onPressed: () {
+                    ref
+                        .read(bottomNavigationStateNotifierProvider.notifier)
+                        .changeIndex(bottomSVGS.indexOf(e));
+                  },
+                  icon: SvgPicture.asset(
+                    e,
+                    colorFilter: ColorFilter.mode(
+                        ref.watch(bottomNavigationStateNotifierProvider) ==
+                                bottomSVGS.indexOf(e)
+                            ? DentsuColors.brightPurple
+                            : DentsuColors.lightGrey,
+                        BlendMode.srcIn),
+                  ));
+            }).toList()),
+      ),
     );
   }
 }

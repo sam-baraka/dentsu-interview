@@ -1,4 +1,5 @@
 import 'package:dentsu_interview/main_home/leads/leads_list.dart';
+import 'package:dentsu_interview/main_home/quotes/quotes_list.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +33,7 @@ class QuotesPage extends ConsumerWidget {
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
           ],
         ),
-        const Expanded(child: LeadsList())
+        const Expanded(child: QuotesList())
       ],
     );
   }

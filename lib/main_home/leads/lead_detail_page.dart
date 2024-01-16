@@ -228,7 +228,7 @@ class LeadDetailRoute extends ConsumerWidget {
                       length: 2,
                       child: Column(
                         children: [
-                          TabBar(tabs: [
+                          const TabBar(tabs: [
                             Tab(
                               text: 'Lead Details',
                             ),
@@ -271,7 +271,7 @@ class LeadDetailRoute extends ConsumerWidget {
                                   })
                                 ],
                               ),
-                              Column()
+                              const Column()
                             ]),
                           )
                         ],

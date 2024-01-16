@@ -23,7 +23,8 @@ class DashboardPage extends ConsumerWidget {
           child: [
             const HomeWidget(),
             const LeadsWidget(),
-            const QuotesPage()
+            const QuotesPage(),
+            Container()
           ][ref.watch(bottomNavigationStateNotifierProvider)]),
       bottomNavigationBar: const BottomNavigationWidget(),
     );
