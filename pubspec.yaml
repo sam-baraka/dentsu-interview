@@ -97,6 +97,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   assets:
+    - assets/images/
     - shorebird.yaml
     - assets/icon/
     - assets/svgs/

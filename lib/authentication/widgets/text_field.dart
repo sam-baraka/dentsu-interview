@@ -6,11 +6,13 @@ class AuthTextField extends StatelessWidget {
   final String name;
   final String Function(String?)? validator;
   final String labelText;
+  final Color labelColor;
   final String hintText;
   const AuthTextField(
       {super.key,
       required this.name,
       this.validator,
+      this.labelColor = Colors.white,
       required this.labelText,
       required this.hintText});
 
@@ -22,7 +24,7 @@ class AuthTextField extends StatelessWidget {
         children: [
           Text(
             labelText,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(color: labelColor, fontSize: 16),
           ),
           const SizedBox(
             height: 8,

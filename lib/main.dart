@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dentsu_interview/desktop/login_desktop_page.dart';
+import 'package:dentsu_interview/main_home/app_bar/app_bar.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:dentsu_interview/router/app_router.dart';
 import 'package:flutter/foundation.dart';
@@ -11,7 +15,7 @@ void main() async {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
-  runApp(MyApp());
+  runApp(Platform.isAndroid || Platform.isIOS ? MyApp() : const WebApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,5 +35,22 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class WebApp extends StatelessWidget {
+  const WebApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Dentsu Interview',
+        theme: ThemeData(
+          textTheme: GoogleFonts.dmSansTextTheme(),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: DentsuColors.purple, secondary: DentsuColors.peach),
+          useMaterial3: true,
+        ),
+        home: LoginDesktopPage());
   }
 }
