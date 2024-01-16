@@ -9,6 +9,7 @@ class GreyTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? hintColor;
   final Color? backgroundColor;
+  final Widget? prefixIcon;
   final String name;
   final String? helperText;
   final int? maxLines;
@@ -22,6 +23,7 @@ class GreyTextField extends StatelessWidget {
       required this.hintText,
       this.onObscureTextPressed,
       this.backgroundColor,
+      this.prefixIcon,
       this.hintColor,
       this.maxLines,
       this.keyboardType,
@@ -36,6 +38,7 @@ class GreyTextField extends StatelessWidget {
       maxLines: maxLines ?? 1,
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
         hintText: hintText,
         helperText: helperText,
         fillColor: backgroundColor ?? DentsuColors.lightGrey,

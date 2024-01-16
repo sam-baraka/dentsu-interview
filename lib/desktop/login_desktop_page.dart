@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/authentication/widgets/text_field.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+@RoutePage()
 class LoginDesktopPage extends ConsumerWidget {
   const LoginDesktopPage({super.key});
 
@@ -105,7 +108,9 @@ class LoginDesktopPage extends ConsumerWidget {
                           height: 42,
                         ),
                         MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AutoRouter.of(context).push(const MainDashboardRoute());
+                          },
                           color: DentsuColors.purple,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(90)),
@@ -139,6 +144,41 @@ class LoginDesktopPage extends ConsumerWidget {
               children: [
                 Positioned.fill(
                     child: Image.asset('assets/images/login_image.png')),
+                Positioned(
+                  left: 100,
+                  bottom: 200,
+                  right: 100,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Marketing Automation",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                          "360 degree messaging automation for companies made for both customers and internal cross-communication ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: 300,
+                        child: LinearProgressIndicator(
+                          value: 0.7,
+                          backgroundColor: Colors.black54,
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(90),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ))
           ],
