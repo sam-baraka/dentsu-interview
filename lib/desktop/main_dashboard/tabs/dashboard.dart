@@ -1,5 +1,4 @@
 import 'package:dentsu_interview/common/grey_drop_down.dart';
-import 'package:dentsu_interview/main_home/home_widgets/top_tiles.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
