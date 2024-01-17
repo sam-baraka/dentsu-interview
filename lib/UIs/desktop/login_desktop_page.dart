@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dentsu_interview/authentication/widgets/text_field.dart';
+import 'package:dentsu_interview/UIs/authentication/widgets/text_field.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dentsu_interview/desktop/main_dashboard/admin_app_bar/admin_app_bar.dart';
-import 'package:dentsu_interview/desktop/main_dashboard/navigation_rail_provider/navigation_rail_provider.dart';
-import 'package:dentsu_interview/desktop/main_dashboard/tabs/dashboard.dart';
-import 'package:dentsu_interview/desktop/main_dashboard/tabs/leads.dart';
+import 'package:dentsu_interview/UIs/desktop/main_dashboard/admin_app_bar/admin_app_bar.dart';
+import 'package:dentsu_interview/UIs/desktop/main_dashboard/navigation_rail_provider/navigation_rail_provider.dart';
+import 'package:dentsu_interview/UIs/desktop/main_dashboard/tabs/dashboard.dart';
+import 'package:dentsu_interview/UIs/desktop/main_dashboard/tabs/leads.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

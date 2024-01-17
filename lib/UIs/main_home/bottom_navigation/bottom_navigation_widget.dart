@@ -1,4 +1,5 @@
-import 'package:dentsu_interview/main_home/bottom_navigation/bottom_navigation_provider.dart';
+import 'package:dentsu_interview/UIs/main_home/bottom_navigation/bottom_navigation_provider.dart';
+
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

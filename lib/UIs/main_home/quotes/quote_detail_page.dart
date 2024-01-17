@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dentsu_interview/main_home/app_bar/app_bar.dart';
-import 'package:dentsu_interview/main_home/quotes/tabs/benefits.dart';
-import 'package:dentsu_interview/main_home/quotes/tabs/quote_information.dart';
-import 'package:dentsu_interview/main_home/quotes/tabs/setup.dart';
+import 'package:dentsu_interview/UIs/main_home/app_bar/app_bar.dart';
+import 'package:dentsu_interview/UIs/main_home/quotes/tabs/benefits.dart';
+import 'package:dentsu_interview/UIs/main_home/quotes/tabs/quote_information.dart';
+import 'package:dentsu_interview/UIs/main_home/quotes/tabs/setup.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 

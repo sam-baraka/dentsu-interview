@@ -1,6 +1,6 @@
-import 'package:dentsu_interview/common/grey_drop_down.dart';
-import 'package:dentsu_interview/common/grey_text_field.dart';
-import 'package:dentsu_interview/main_home/leads/leads_list.dart';
+import 'package:dentsu_interview/UIs/common/grey_drop_down.dart';
+import 'package:dentsu_interview/UIs/common/grey_text_field.dart';
+import 'package:dentsu_interview/UIs/main_home/leads/leads_list.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

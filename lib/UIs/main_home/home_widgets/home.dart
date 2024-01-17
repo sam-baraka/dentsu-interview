@@ -1,5 +1,5 @@
-import 'package:dentsu_interview/main_home/home_widgets/top_tiles.dart';
-import 'package:dentsu_interview/main_home/leads/leads_list.dart';
+import 'package:dentsu_interview/UIs/main_home/home_widgets/top_tiles.dart';
+import 'package:dentsu_interview/UIs/main_home/leads/leads_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -42,7 +42,7 @@ class HomeWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          LeadsList()
+          const LeadsList()
         ],
       ),
     );

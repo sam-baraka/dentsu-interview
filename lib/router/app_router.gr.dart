@@ -9,13 +9,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:dentsu_interview/authentication/login_page.dart' as _i4;
-import 'package:dentsu_interview/desktop/login_desktop_page.dart' as _i3;
-import 'package:dentsu_interview/desktop/main_dashboard/main_dashboard.dart'
+import 'package:dentsu_interview/UIs/authentication/login_page.dart' as _i4;
+import 'package:dentsu_interview/UIs/desktop/login_desktop_page.dart' as _i3;
+import 'package:dentsu_interview/UIs/desktop/main_dashboard/main_dashboard.dart'
     as _i5;
-import 'package:dentsu_interview/main_home/dashboard_page.dart' as _i1;
-import 'package:dentsu_interview/main_home/leads/lead_detail_page.dart' as _i2;
-import 'package:dentsu_interview/main_home/quotes/quote_detail_page.dart'
+import 'package:dentsu_interview/UIs/main_home/dashboard_page.dart' as _i1;
+import 'package:dentsu_interview/UIs/main_home/leads/lead_detail_page.dart'
+    as _i2;
+import 'package:dentsu_interview/UIs/main_home/quotes/quote_detail_page.dart'
     as _i6;
 
 abstract class $AppRouter extends _i7.RootStackRouter {

@@ -1,4 +1,4 @@
-import 'package:dentsu_interview/common/grey_outlined_label.dart';
+import 'package:dentsu_interview/UIs/common/grey_outlined_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
