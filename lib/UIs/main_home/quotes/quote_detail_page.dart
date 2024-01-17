@@ -3,19 +3,21 @@ import 'package:dentsu_interview/UIs/main_home/app_bar/app_bar.dart';
 import 'package:dentsu_interview/UIs/main_home/quotes/tabs/benefits.dart';
 import 'package:dentsu_interview/UIs/main_home/quotes/tabs/quote_information.dart';
 import 'package:dentsu_interview/UIs/main_home/quotes/tabs/setup.dart';
+import 'package:dentsu_interview/models/dentsuquote.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
 class QuoteDetailPage extends StatelessWidget {
-  const QuoteDetailPage({super.key});
+  final DentsuQuote quote;
+  const QuoteDetailPage({super.key, required this.quote});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: DentsuColors.lightGreyLight,
       appBar: const AppAppBar(),
-      body: const Padding(
+      body:  Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,9 +52,9 @@ class QuoteDetailPage extends StatelessWidget {
                         Expanded(
                             child: TabBarView(
                           children: [
-                            QuoteInformation(),
-                            Setup(),
-                            Benefits(),
+                            QuoteInformation(quote: quote,),
+                            Setup(quote: quote,),
+                            Benefits(quote: quote,),
                           ],
                         ))
                       ],

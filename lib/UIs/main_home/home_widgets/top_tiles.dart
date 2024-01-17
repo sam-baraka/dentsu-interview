@@ -192,9 +192,11 @@ class LeadsChart extends ConsumerWidget {
       5,
       6,
     ];
-    var credit = [3, 4, 5, 2, 7, 5];
+    var credit = [3, 4, 5, 2, 7, 8];
 
-    var insurance = [1, 5, 6, 3, 2, 1];
+    var insurance = [1, 5, 6, 3, 2, 4];
+
+    var x = [1, 2, 3, 4, 5, 6];
     return LineChartData(
       gridData: const FlGridData(show: false),
       titlesData: const FlTitlesData(
@@ -221,27 +223,25 @@ class LeadsChart extends ConsumerWidget {
       borderData: FlBorderData(
         show: false,
       ),
-      minX: 1,
-      maxX: 12,
       lineBarsData: [
         LineChartBarData(
           dotData: const FlDotData(show: false),
           color: DentsuColors.brightPurple,
-          isCurved: false,
+          isCurved: true,
           spots: [
             ...accounts.map(
-                (e) => FlSpot(accounts.indexOf(e).toDouble(), e.toDouble()))
+                (e) => FlSpot(x[accounts.indexOf(e)].toDouble(), e.toDouble()))
           ],
           barWidth: 2,
           isStrokeCapRound: true,
         ),
         LineChartBarData(
           color: DentsuColors.blueIsh,
-          isCurved: false,
+          isCurved: true,
           dotData: const FlDotData(show: false),
           spots: [
-            ...credit
-                .map((e) => FlSpot(credit.indexOf(e).toDouble(), e.toDouble()))
+            ...credit.map(
+                (e) => FlSpot(x[credit.indexOf(e)].toDouble(), e.toDouble()))
           ],
           barWidth: 2,
           isStrokeCapRound: true,
@@ -249,10 +249,10 @@ class LeadsChart extends ConsumerWidget {
         LineChartBarData(
           color: DentsuColors.lime,
           dotData: const FlDotData(show: false),
-          isCurved: false,
+          isCurved: true,
           spots: [
             ...insurance.map(
-                (e) => FlSpot(insurance.indexOf(e).toDouble(), e.toDouble()))
+                (e) => FlSpot(x[insurance.indexOf(e)].toDouble(), e.toDouble()))
           ],
           barWidth: 2,
           isStrokeCapRound: true,

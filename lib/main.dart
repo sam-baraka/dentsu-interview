@@ -7,11 +7,13 @@ import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:dentsu_interview/router/app_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mpesa_flutter_plugin/initializer.dart';
 import 'package:restart_app/restart_app.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
@@ -31,6 +33,8 @@ Future<void> _checkForUpdates() async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MpesaFlutterPlugin.setConsumerKey('8I4RKX0dEjVYSmWHCM0AOWuHE08yzLMH');
+  MpesaFlutterPlugin.setConsumerSecret('pteb1sayPgADd97A');
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
@@ -52,9 +56,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Timer _timer;
-    _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
-      _checkForUpdates();
+    FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    remoteConfig.onConfigUpdated.listen((event) async {
+      await shorebirdCodePush.downloadUpdateIfAvailable();
+      Restart.restartApp();
     });
   }
 

@@ -26,7 +26,8 @@ class AddQuotePage extends ConsumerWidget {
           ));
         },
         success: (data) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ref.read(getQuotesProvider.notifier).getQuotes();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Created Quote Successfully'),
             backgroundColor: Colors.green,
           ));

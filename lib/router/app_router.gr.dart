@@ -78,9 +78,13 @@ abstract class $AppRouter extends _i8.RootStackRouter {
       );
     },
     QuoteDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<QuoteDetailRouteArgs>();
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.QuoteDetailPage(),
+        child: _i7.QuoteDetailPage(
+          key: args.key,
+          quote: args.quote,
+        ),
       );
     },
   };
@@ -251,14 +255,38 @@ class MainDashboardRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.QuoteDetailPage]
-class QuoteDetailRoute extends _i8.PageRouteInfo<void> {
-  const QuoteDetailRoute({List<_i8.PageRouteInfo>? children})
-      : super(
+class QuoteDetailRoute extends _i8.PageRouteInfo<QuoteDetailRouteArgs> {
+  QuoteDetailRoute({
+    _i9.Key? key,
+    required _i10.DentsuQuote quote,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           QuoteDetailRoute.name,
+          args: QuoteDetailRouteArgs(
+            key: key,
+            quote: quote,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'QuoteDetailRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i8.PageInfo<QuoteDetailRouteArgs> page =
+      _i8.PageInfo<QuoteDetailRouteArgs>(name);
+}
+
+class QuoteDetailRouteArgs {
+  const QuoteDetailRouteArgs({
+    this.key,
+    required this.quote,
+  });
+
+  final _i9.Key? key;
+
+  final _i10.DentsuQuote quote;
+
+  @override
+  String toString() {
+    return 'QuoteDetailRouteArgs{key: $key, quote: $quote}';
+  }
 }

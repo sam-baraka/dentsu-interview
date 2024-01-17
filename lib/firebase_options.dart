@@ -50,6 +50,7 @@ class DefaultFirebaseOptions {
     projectId: 'dentsu-interview',
     authDomain: 'dentsu-interview.firebaseapp.com',
     storageBucket: 'dentsu-interview.appspot.com',
+    measurementId: 'G-GD8946NYXH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
