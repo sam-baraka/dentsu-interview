@@ -10,12 +10,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(
             page: LoginRoute.page,
             initial: Platform.isAndroid || Platform.isIOS ? true : false),
-        AutoRoute(page: DashboardRoute.page),
+        AutoRoute(page: DashboardRoute.page, path: '/mobile_dashboard'),
         AutoRoute(page: LeadDetailRoute.page),
         AutoRoute(page: QuoteDetailRoute.page),
         AutoRoute(
             page: LoginDesktopRoute.page,
             initial: Platform.isAndroid || Platform.isIOS ? false : true),
-        AutoRoute(page: MainDashboardRoute.page),
+        AutoRoute(page: MainDashboardRoute.page, path: '/main_dashboard'),
       ];
 }

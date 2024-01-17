@@ -18,6 +18,7 @@ import 'package:dentsu_interview/UIs/main_home/leads/lead_detail_page.dart'
     as _i2;
 import 'package:dentsu_interview/UIs/main_home/quotes/quote_detail_page.dart'
     as _i6;
+import 'package:flutter/material.dart' as _i8;
 
 abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -43,9 +44,11 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.LoginPage(),
+        child: _i4.LoginPage(key: args.key),
       );
     },
     MainDashboardRoute.name: (routeData) {
@@ -107,16 +110,31 @@ class LoginDesktopRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.LoginPage]
-class LoginRoute extends _i7.PageRouteInfo<void> {
-  const LoginRoute({List<_i7.PageRouteInfo>? children})
-      : super(
+class LoginRoute extends _i7.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    _i8.Key? key,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
           LoginRoute.name,
+          args: LoginRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<LoginRouteArgs> page =
+      _i7.PageInfo<LoginRouteArgs>(name);
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

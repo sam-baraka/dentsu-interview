@@ -1,7 +1,7 @@
-import 'package:dentsu_interview/authentication/widgets/text_field.dart';
+import 'package:dentsu_interview/UIs/authentication/login_page.dart';
+import 'package:dentsu_interview/UIs/authentication/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:dentsu_interview/authentication/login_page.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
@@ -10,7 +10,7 @@ void main() {
   testWidgets('Login page renders correctly', (WidgetTester tester) async {
     // Build the widget
     await tester.pumpWidget(MaterialApp(
-      home: const LoginPage(),
+      home: LoginPage(),
       navigatorObservers: [MockNavigatorObserver()],
     ));
 
@@ -25,7 +25,7 @@ void main() {
   testWidgets('Login button disabled when fields are empty',
       (WidgetTester tester) async {
     // Build the widget
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: LoginPage(),
     ));
 
@@ -40,7 +40,7 @@ void main() {
   testWidgets('Login button enabled when fields are filled',
       (WidgetTester tester) async {
     // Build the widget
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: LoginPage(),
     ));
 
@@ -67,7 +67,7 @@ void main() {
 
     // Build the widget
     await tester.pumpWidget(MaterialApp(
-      home: const LoginPage(),
+      home: LoginPage(),
       navigatorObservers: [mockObserver],
     ));
 
