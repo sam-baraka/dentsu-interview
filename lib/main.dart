@@ -33,8 +33,8 @@ Future<void> _checkForUpdates() async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MpesaFlutterPlugin.setConsumerKey('8I4RKX0dEjVYSmWHCM0AOWuHE08yzLMH');
-  MpesaFlutterPlugin.setConsumerSecret('pteb1sayPgADd97A');
+  MpesaFlutterPlugin.setConsumerKey('p8EpowEvp9DquxvCAn6NYKi9uxzyHoQW');
+  MpesaFlutterPlugin.setConsumerSecret('9020JVYryjcalPs0');
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);

@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/UIs/common/grey_text_field.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -47,6 +50,15 @@ class AdminAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ),
             ),
             const Spacer(),
+            IconButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  AutoRouter.of(context).replace(LoginDesktopRoute());
+                },
+                icon: const Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                )),
             IconButton(
                 onPressed: () {},
                 icon: const Icon(

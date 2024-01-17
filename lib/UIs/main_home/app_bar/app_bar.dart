@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,11 +30,12 @@ class AppAppBar extends ConsumerWidget implements PreferredSizeWidget {
                     'https://media.istockphoto.com/id/1410538853/photo/young-man-in-the-public-park.webp?b=1&s=170667a&w=0&k=20&c=pGdjFVdK-_BhTa6PMy5VNcXdbxVNngzg-OPzMfJKrG8='),
               ),
               IconButton(
-                  onPressed: () {},
-                  padding: const EdgeInsets.all(0),
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    AutoRouter.of(context).replace(LoginRoute());
+                  },
                   icon: const Icon(
-                    Icons.search,
-                    size: 30,
+                    Icons.logout,
                     color: Colors.white,
                   )),
               IconButton(

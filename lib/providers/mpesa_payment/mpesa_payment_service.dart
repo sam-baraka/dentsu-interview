@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:mpesa_flutter_plugin/mpesa_flutter_plugin.dart';
 
 class MpesaPaymentService {
-  static String baseUrl = 'https://3086-105-163-1-236.ngrok-free.app';
   static Future<Map<String, dynamic>> payWithMpesa(
       {required String phoneNumber, required String identifier}) async {
     try {
+      FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+      await remoteConfig.fetchAndActivate();
+      String baseUrl = remoteConfig.getString('paymentUrl');
       var x = await MpesaFlutterPlugin.initializeMpesaSTKPush(
           businessShortCode: '174379',
           transactionType: TransactionType.CustomerPayBillOnline,
@@ -28,12 +31,16 @@ class MpesaPaymentService {
   static Future<Map<String, dynamic>> confirmPayment(
       {required String checkoutRequestID,
       required String merchantRequestId}) async {
+    FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetchAndActivate();
+    String baseUrl = remoteConfig.getString('paymentUrl');
     try {
       Dio dio = Dio();
       var response = await dio.get('$baseUrl/callback/$merchantRequestId');
 
       return response.data;
     } on DioException catch (e) {
+      print(e.toString());
       throw 'Could not complete transaction';
     } catch (e) {
       throw 'Could not complete transaction';

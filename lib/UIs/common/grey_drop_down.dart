@@ -11,6 +11,7 @@ class GreyDropDownField extends StatelessWidget {
   final String? Function(dynamic)? validator;
   final Color? fillColor;
   final List<DropdownMenuItem<dynamic>> items;
+  final void Function(dynamic)? onChanged;
   const GreyDropDownField(
       {super.key,
       required this.hintText,
@@ -19,6 +20,7 @@ class GreyDropDownField extends StatelessWidget {
       this.helperText,
       this.keyboardType,
       this.validator,
+      this.onChanged,
       required this.items,
       required this.name});
 
@@ -39,6 +41,7 @@ class GreyDropDownField extends StatelessWidget {
         FormBuilderDropdown(
           name: name,
           initialValue: null,
+          onChanged: onChanged,
           itemHeight: 50,
           validator: validator,
           decoration: InputDecoration(

@@ -1,6 +1,7 @@
 import 'package:dentsu_interview/UIs/common/grey_drop_down.dart';
 import 'package:dentsu_interview/UIs/common/grey_text_field.dart';
 import 'package:dentsu_interview/UIs/main_home/leads/leads_list.dart';
+import 'package:dentsu_interview/providers/quotes_provider/quotes_provider.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -52,46 +53,69 @@ class DesktopLeads extends ConsumerWidget {
                 children: [
                   Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                           child: GreyTextField(
                               backgroundColor: Colors.white,
+                              onChanged: (val) {
+                                ref
+                                    .read(getQuotesProvider.notifier)
+                                    .filterQuotes(name: val);
+                              },
                               hintText: 'Customer Name',
                               name: 'name')),
                       const SizedBox(
                         width: 10,
                       ),
-                      const Expanded(
-                          child: GreyDropDownField(
-                        hintText: 'Region',
-                        name: 'name',
-                        items: [DropdownMenuItem(child: Text('Nairobi'))],
-                      )),
+                      Expanded(
+                          child: GreyTextField(
+                              backgroundColor: Colors.white,
+                              onChanged: (val) {
+                                ref
+                                    .read(getQuotesProvider.notifier)
+                                    .filterQuotes(email: val);
+                              },
+                              hintText: 'Customer Email',
+                              name: 'email')),
                       const SizedBox(
                         width: 10,
                       ),
-                      const Expanded(
+
+                      Expanded(
                           child: GreyDropDownField(
+                        onChanged: (val) {
+                          ref.read(getQuotesProvider.notifier).filterQuotes();
+                        },
                         hintText: 'Product',
                         name: 'name',
-                        items: [DropdownMenuItem(child: Text('Mortgage'))],
+                        items: const [
+                          DropdownMenuItem(child: Text('Mortgage'))
+                        ],
                       )),
                       const SizedBox(
                         width: 10,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: GreyDropDownField(
                         hintText: 'Status',
+                        onChanged: (val) {
+                          ref.read(getQuotesProvider.notifier).filterQuotes();
+                        },
                         name: 'name',
-                        items: [DropdownMenuItem(child: Text('Status'))],
+                        items: const [DropdownMenuItem(child: Text('Status'))],
                       )),
                       const SizedBox(
                         width: 10,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: GreyDropDownField(
                         hintText: 'Date',
+                        onChanged: (val) {
+                          ref.read(getQuotesProvider.notifier).filterQuotes();
+                        },
                         name: 'name',
-                        items: [DropdownMenuItem(child: Text('This Month'))],
+                        items: const [
+                          DropdownMenuItem(child: Text('This Month'))
+                        ],
                       )),
                       const SizedBox(
                         width: 10,

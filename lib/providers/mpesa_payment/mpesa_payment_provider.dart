@@ -21,10 +21,11 @@ class MpesaPaymentNotifier extends StateNotifier<MpesaPaymentState> {
   }
 
   confirmPayment(
-      {required String checkoutRequestID, required String merchantRequestId}) {
+      {required String checkoutRequestID,
+      required String merchantRequestId}) async {
     try {
       state = MpesaPaymentState.loading();
-      MpesaPaymentService.confirmPayment(
+      await MpesaPaymentService.confirmPayment(
           checkoutRequestID: checkoutRequestID,
           merchantRequestId: merchantRequestId);
       state = MpesaPaymentState.success();

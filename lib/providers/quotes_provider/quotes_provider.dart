@@ -37,4 +37,31 @@ class GetQuotesNotifier extends StateNotifier<FutureState<List<DentsuQuote>>> {
       state = FutureState.error(message: e.toString());
     }
   }
+
+  filterQuotes({String? name, String? email}) async {
+    state = FutureState.loading();
+    try {
+      var quotes = await QuotesService.getQuotes();
+      if (name == null && email == null) {
+        state = FutureState.success(data: quotes);
+        return;
+      } else if (name != null) {
+        state = FutureState.success(
+            data: quotes.where((element) {
+          return element.firstName!
+                  .toLowerCase()
+                  .contains(name.toLowerCase()) ||
+              element.lastName!.toLowerCase().contains(name.toLowerCase()) ||
+              element.middleName!.toLowerCase().contains(name.toLowerCase());
+        }).toList());
+      } else if (email != null) {
+        state = FutureState.success(
+            data: quotes.where((element) {
+          return element.email!.toLowerCase().contains(email.toLowerCase());
+        }).toList());
+      }
+    } catch (e) {
+      state = FutureState.error(message: e.toString());
+    }
+  }
 }

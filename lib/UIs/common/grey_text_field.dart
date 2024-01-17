@@ -11,6 +11,7 @@ class GreyTextField extends StatelessWidget {
   final Color? backgroundColor;
   final Widget? prefixIcon;
   final String name;
+  final void Function(String?)? onChanged;
   final String? helperText;
   final int? maxLines;
   final String? Function(String?)? validator;
@@ -20,6 +21,7 @@ class GreyTextField extends StatelessWidget {
       this.obscureText,
       this.validator,
       this.helperText,
+      this.onChanged,
       required this.hintText,
       this.onObscureTextPressed,
       this.backgroundColor,
@@ -45,6 +47,7 @@ class GreyTextField extends StatelessWidget {
             : Container(),
         FormBuilderTextField(
           obscureText: obscureText ?? false,
+          onChanged: onChanged,
           name: name,
           validator: validator,
           maxLines: maxLines ?? 1,

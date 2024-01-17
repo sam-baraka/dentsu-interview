@@ -106,7 +106,8 @@ class LeadsListDesktop extends ConsumerWidget {
           ...leads.map((DentsuQuote e) {
             return InkWell(
               onTap: () {
-                // AutoRouter.of(context).push(const LeadDetailRoute());
+                AutoRouter.of(context).push(LeadDetailRoute(
+                    index: leads.indexOf(e), quote: e, quotes: leads));
               },
               child: Container(
                 padding: const EdgeInsets.all(20),

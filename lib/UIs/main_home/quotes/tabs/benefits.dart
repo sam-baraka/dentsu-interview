@@ -289,11 +289,11 @@ class Benefits extends ConsumerWidget {
                       ),
                       orElse: () {
                         return OutlinedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             ref
                                 .read(mpesaPaymentNotifierProvider.notifier)
                                 .initiatePayment(
-                                    phone: '254797301429',
+                                    phone: await getPhoneNumber(context),
                                     identifier: '1234567890');
                           },
                           style: OutlinedButton.styleFrom(
@@ -315,5 +315,36 @@ class Benefits extends ConsumerWidget {
         )
       ],
     );
+  }
+
+  Future<String> getPhoneNumber(BuildContext context) async {
+    TextEditingController phoneController = TextEditingController()
+      ..text = '254';
+    var number = await showDialog<String>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Enter Phone Number'),
+            content: TextField(
+              controller: phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(hintText: 'Phone Number'),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    if (phoneController.text.length < 10) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Invalid phone number'),
+                      ));
+                      return;
+                    }
+                    Navigator.of(context).pop(phoneController.text);
+                  },
+                  child: const Text('Submit'))
+            ],
+          );
+        });
+    return number!;
   }
 }
