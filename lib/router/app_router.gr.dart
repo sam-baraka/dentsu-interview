@@ -38,9 +38,11 @@ abstract class $AppRouter extends _i7.RootStackRouter {
       );
     },
     LoginDesktopRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginDesktopRouteArgs>(
+          orElse: () => const LoginDesktopRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.LoginDesktopPage(),
+        child: _i3.LoginDesktopPage(key: args.key),
       );
     },
     LoginRoute.name: (routeData) {
@@ -96,16 +98,31 @@ class LeadDetailRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LoginDesktopPage]
-class LoginDesktopRoute extends _i7.PageRouteInfo<void> {
-  const LoginDesktopRoute({List<_i7.PageRouteInfo>? children})
-      : super(
+class LoginDesktopRoute extends _i7.PageRouteInfo<LoginDesktopRouteArgs> {
+  LoginDesktopRoute({
+    _i8.Key? key,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
           LoginDesktopRoute.name,
+          args: LoginDesktopRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginDesktopRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<LoginDesktopRouteArgs> page =
+      _i7.PageInfo<LoginDesktopRouteArgs>(name);
+}
+
+class LoginDesktopRouteArgs {
+  const LoginDesktopRouteArgs({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginDesktopRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

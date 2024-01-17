@@ -33,12 +33,12 @@ class MyApp extends StatelessWidget {
           deepLinkBuilder: (deepLink) {
             if (Platform.isAndroid || Platform.isIOS) {
               if (FirebaseAuth.instance.currentUser != null) {
-                return DeepLink.path('/mobile_dashboard');
+                return const DeepLink.path('/mobile_dashboard');
               }
               return deepLink;
             } else {
               if (FirebaseAuth.instance.currentUser != null) {
-                return DeepLink.path( '/main_dashboard');
+                return const DeepLink.path( '/main_dashboard');
               }
               return deepLink;
             }
