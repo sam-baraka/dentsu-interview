@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/UIs/main_home/leads/leads_list.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 class LeadsWidget extends StatelessWidget {
@@ -23,7 +25,9 @@ class LeadsWidget extends StatelessWidget {
                 color: DentsuColors.brightPurple,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(AddQuoteRoute());
+                },
                 child: const Text(
                   '+ New Lead',
                   style: TextStyle(color: Colors.white),

@@ -7,6 +7,7 @@ class GreyDropDownField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? hintColor;
   final String name;
+  final String? helperText;
   final String? Function(dynamic)? validator;
   final Color? fillColor;
   final List<DropdownMenuItem<dynamic>> items;
@@ -15,6 +16,7 @@ class GreyDropDownField extends StatelessWidget {
       required this.hintText,
       this.hintColor,
       this.fillColor,
+      this.helperText,
       this.keyboardType,
       this.validator,
       required this.items,
@@ -22,42 +24,56 @@ class GreyDropDownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilderDropdown(
-      name: name,
-      initialValue: null,
-      itemHeight: 50,
-      validator: validator,
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        hintText: hintText,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
-        hintStyle: TextStyle(
-          color: hintColor ?? DentsuColors.lightGrey,
-          fontSize: 14,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: DentsuColors.lightGrey,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        helperText != null
+            ? Text(
+                helperText ?? '',
+                style: const TextStyle(
+                  fontSize: 14,
+                ),
+              )
+            : Container(),
+        FormBuilderDropdown(
+          name: name,
+          initialValue: null,
+          itemHeight: 50,
+          validator: validator,
+          decoration: InputDecoration(
+            fillColor: Colors.white,
+            filled: true,
+            hintText: hintText,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            hintStyle: TextStyle(
+              color: hintColor ?? DentsuColors.lightGrey,
+              fontSize: 14,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: DentsuColors.lightGrey,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: DentsuColors.lightGrey,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: DentsuColors.lightGrey,
+              ),
+            ),
           ),
+          items: items,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: DentsuColors.lightGrey,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: DentsuColors.lightGrey,
-          ),
-        ),
-      ),
-      items: items,
+      ],
     );
   }
 }

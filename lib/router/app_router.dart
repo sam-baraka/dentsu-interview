@@ -17,5 +17,6 @@ class AppRouter extends $AppRouter {
             page: LoginDesktopRoute.page,
             initial: Platform.isAndroid || Platform.isIOS ? false : true),
         AutoRoute(page: MainDashboardRoute.page, path: '/main_dashboard'),
+        AutoRoute(page: AddQuoteRoute.page),
       ];
 }

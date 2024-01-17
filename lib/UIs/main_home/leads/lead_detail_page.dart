@@ -3,14 +3,21 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:dentsu_interview/UIs/desktop/main_dashboard/admin_app_bar/admin_app_bar.dart';
 import 'package:dentsu_interview/UIs/main_home/app_bar/app_bar.dart';
+import 'package:dentsu_interview/models/dentsuquote.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
+import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 @RoutePage()
-class LeadDetailRoute extends ConsumerWidget {
-  const LeadDetailRoute({super.key});
+class LeadDetailPage extends ConsumerWidget {
+  final DentsuQuote quote;
+  final int index;
+  final List<DentsuQuote> quotes;
+  const LeadDetailPage(this.index, this.quotes,
+      {super.key, required this.quote});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,10 +44,10 @@ class LeadDetailRoute extends ConsumerWidget {
                             text: 'Back to all leads / ',
                             style: TextStyle(
                                 fontSize: 12, color: DentsuColors.brightPurple),
-                            children: const [
+                            children: [
                               TextSpan(
-                                  text: 'LD-20321536-3125367',
-                                  style: TextStyle(color: Colors.black))
+                                  text: 'LD-${quote.id}}',
+                                  style: const TextStyle(color: Colors.black))
                             ]))
                       ],
                     ),
@@ -106,7 +113,12 @@ class LeadDetailRoute extends ConsumerWidget {
                               color: DentsuColors.brightPurple,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
-                              onPressed: () {},
+                              onPressed: () {
+                                AutoRouter.of(context).push(LeadDetailRoute(
+                                    index: index + 1,
+                                    quotes: quotes,
+                                    quote: quotes[index + 1]));
+                              },
                               child: const Row(
                                 children: [
                                   Text(
@@ -142,7 +154,11 @@ class LeadDetailRoute extends ConsumerWidget {
                                     backgroundImage: NetworkImage(
                                         'https://media.istockphoto.com/id/1410538853/photo/young-man-in-the-public-park.webp?b=1&s=170667a&w=0&k=20&c=pGdjFVdK-_BhTa6PMy5VNcXdbxVNngzg-OPzMfJKrG8='),
                                   ),
-                                  title: const Text('Joseph Kimeu Walter'),
+                                  title: Text(quote.firstName! +
+                                      ' ' +
+                                      quote.lastName! +
+                                      ' ' +
+                                      quote.middleName!),
                                   subtitle: Text(
                                     'Nairobi, Kenya',
                                     style: TextStyle(
@@ -167,7 +183,8 @@ class LeadDetailRoute extends ConsumerWidget {
                                         color: DentsuColors.greyHintColor),
                                   ),
                                   subtitle: Text(
-                                    '10 Jan 2021',
+                                    DateFormat.yMMMMd().format(
+                                        DateTime.parse(quote.createdAt!)),
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: DentsuColors.greyHintColor,
@@ -191,7 +208,8 @@ class LeadDetailRoute extends ConsumerWidget {
                                         color: DentsuColors.greyHintColor),
                                   ),
                                   subtitle: Text(
-                                    '10 Jan 2021',
+                                    DateFormat.yMMMMd().format(
+                                        DateTime.parse(quote.createdAt!)),
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: DentsuColors.greyHintColor,
@@ -215,7 +233,9 @@ class LeadDetailRoute extends ConsumerWidget {
                                         color: DentsuColors.greyHintColor),
                                   ),
                                   subtitle: Text(
-                                    '10 Jan 2021',
+                                    DateFormat.yMMMMd().format(DateTime.now()
+                                        .add(const Duration(
+                                            days: 2, hours: 2, minutes: 30))),
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: DentsuColors.greyHintColor,

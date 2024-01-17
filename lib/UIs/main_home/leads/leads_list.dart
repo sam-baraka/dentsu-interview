@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dentsu_interview/models/dentsuquote.dart';
+import 'package:dentsu_interview/providers/quotes_provider/quotes_provider.dart';
 import 'package:dentsu_interview/resources/dentsu_colors.dart';
 import 'package:dentsu_interview/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -9,46 +11,43 @@ class LeadsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(children: [
-      ...leads.map((e) {
-        return ListTile(
-          onTap: () {
-            AutoRouter.of(context).push(const LeadDetailRoute());
-          },
-          tileColor: leads.indexOf(e) % 2 == 0
-              ? DentsuColors.lightGreyLight
-              : Colors.white,
-          title: Text(e),
-          leading: Text(
-            leads.indexOf(e).toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+    return ref.watch(getQuotesProvider).maybeWhen(
+      loading: () {
+        return const Center(
+          child: CircularProgressIndicator(),
         );
-      }),
-      Row(
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.arrow_back_ios),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(const CircleBorder(
-                    side: BorderSide(color: Colors.black12)))),
-          ),
-          const Spacer(),
-          const Center(child: PageSelector()),
-          const Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.arrow_forward_ios),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(const CircleBorder(
-                    side: BorderSide(color: Colors.black12)))),
-          ),
-        ],
-      )
-    ]);
+      },
+      orElse: () {
+        return Center(
+            child: TextButton(
+          onPressed: () {
+            AutoRouter.of(context).push(AddQuoteRoute());
+          },
+          child: const Text('Create Quote'),
+        ));
+      },
+      success: (leads) {
+        return Column(children: [
+          ...leads.map((e) {
+            DentsuQuote quote = e;
+            return ListTile(
+              onTap: () {
+                AutoRouter.of(context).push(LeadDetailRoute(
+                    quote: quote, quotes: leads, index: leads.indexOf(e)));
+              },
+              tileColor: leads.indexOf(e) % 2 == 0
+                  ? DentsuColors.lightGreyLight
+                  : Colors.white,
+              title: Text('${quote.firstName!} ${quote.lastName!}'),
+              leading: Text(
+                leads.indexOf(e).toString(),
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            );
+          }),
+        ]);
+      },
+    );
   }
 }
 
@@ -94,7 +93,7 @@ class LeadsListDesktop extends ConsumerWidget {
       ...leads.map((e) {
         return InkWell(
           onTap: () {
-            AutoRouter.of(context).push(const LeadDetailRoute());
+            // AutoRouter.of(context).push(const LeadDetailRoute());
           },
           child: Container(
             padding: const EdgeInsets.all(20),
