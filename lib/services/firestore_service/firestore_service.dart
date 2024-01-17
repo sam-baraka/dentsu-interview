@@ -4,7 +4,9 @@ class FirestoreService {
   static Future addData(
       {required String collection, required Map<String, dynamic> data}) async {
     try {
-      return await FirebaseFirestore.instance.collection(collection).add(data);
+      return await FirebaseFirestore.instance.collection(collection).add({...data,
+      'createdAt': DateTime.now().toIso8601String(),
+      });
     } on FirebaseException catch (e) {
       throw e.message!;
     } catch (e) {
